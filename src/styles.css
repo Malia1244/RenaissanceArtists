@@ -141,6 +141,14 @@ a {
   box-shadow: inset 0 -1px 0 var(--gold-line);
 }
 
+.header-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .artist-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -148,7 +156,8 @@ a {
   gap: 0.35rem;
 }
 
-.artist-tabs button {
+.artist-tabs button,
+.sources-link {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -163,7 +172,8 @@ a {
   padding: 0.55rem 0.75rem;
 }
 
-.artist-tabs button[aria-selected="true"] {
+.artist-tabs button[aria-selected="true"],
+.sources-link[aria-current="page"] {
   background: var(--burgundy);
   color: #f8f1e6;
 }
@@ -237,6 +247,15 @@ h1 {
 
 .name-accent {
   color: var(--gold);
+}
+
+.name-note {
+  margin: -1rem 0 1.6rem;
+  color: var(--muted);
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-style: italic;
+  line-height: 1.2;
 }
 
 .meta {
@@ -353,7 +372,7 @@ h3 {
 
 .timeline {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
   gap: 1.25rem;
   margin: 0;
   padding: 0;
@@ -366,18 +385,21 @@ h3 {
 
 .year {
   display: grid;
+  width: max-content;
+  max-width: 100%;
   min-width: 4.6rem;
   height: 4.6rem;
   place-items: center;
   margin: 0 auto 0.85rem;
-  padding: 0 0.75rem;
+  padding: 0 0.85rem;
   border: 1px solid var(--gold-line);
   border-radius: 999px;
   background: #fbf7f0;
   color: var(--burgundy);
   font-family: var(--display);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .timeline li p:last-child,
@@ -501,6 +523,44 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.citation-groups {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.citation-group {
+  padding: 1.4rem 1.5rem 0.6rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.citation-group h2 {
+  margin-bottom: 0.8rem;
+  text-align: left;
+}
+
+.citation-group ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.citation-group li {
+  margin: 0.85rem 0 1rem;
+}
+
+.citation-label {
+  display: block;
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.citation-group a {
+  overflow-wrap: anywhere;
+}
+
 .footer-inner {
   display: flex;
   justify-content: space-between;
@@ -543,6 +603,7 @@ h2:focus,
   }
 
   .section-nav,
+  .header-controls,
   .artist-tabs {
     justify-content: flex-start;
   }

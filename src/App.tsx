@@ -2,27 +2,47 @@ import { useEffect, useState } from "react";
 import { artists } from "./data/artists";
 import { ArtistPage } from "./components/ArtistPage";
 import { Header } from "./components/Header";
+import { WorksCited } from "./components/WorksCited";
 
 export default function App() {
   const [artistId, setArtistId] = useState(artists[0].id);
+  const [view, setView] = useState<"artist" | "sources">("artist");
   const artist = artists.find((entry) => entry.id === artistId) ?? artists[0];
 
   useEffect(() => {
-    document.title = `${artist.selectorLabel} · Renaissance Masters`;
-  }, [artist.selectorLabel]);
+    document.title =
+      view === "sources"
+        ? "Works Cited · Renaissance Masters"
+        : `${artist.selectorLabel} · Renaissance Masters`;
+  }, [artist.selectorLabel, view]);
 
   function selectArtist(nextId: string) {
     setArtistId(nextId);
+    setView("artist");
     requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
       document.getElementById("artist-name")?.focus({ preventScroll: true });
+    });
+  }
+
+  function showSources() {
+    setView("sources");
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      document.getElementById("works-cited-heading")?.focus({ preventScroll: true });
     });
   }
 
   return (
     <>
-      <Header artistId={artist.id} onSelect={selectArtist} />
-      <main key={artist.id}>
-        <ArtistPage artist={artist} />
+      <Header
+        artistId={artist.id}
+        view={view}
+        onSelect={selectArtist}
+        onShowSources={showSources}
+      />
+      <main key={view === "sources" ? "sources" : artist.id}>
+        {view === "sources" ? <WorksCited /> : <ArtistPage artist={artist} />}
       </main>
       <footer className="site-footer">
         <div className="footer-inner">

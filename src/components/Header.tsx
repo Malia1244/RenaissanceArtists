@@ -3,7 +3,9 @@ import { artists, sections } from "../data/artists";
 
 type HeaderProps = {
   artistId: string;
+  view: "artist" | "sources";
   onSelect: (artistId: string) => void;
+  onShowSources: () => void;
 };
 
 function scrollTarget(id: string) {
@@ -23,7 +25,7 @@ function scrollToSection(id: string, behavior: ScrollBehavior = "smooth") {
   return target;
 }
 
-export function Header({ artistId, onSelect }: HeaderProps) {
+export function Header({ artistId, view, onSelect, onShowSources }: HeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState<string>(sections[0].id);
 
@@ -82,48 +84,71 @@ export function Header({ artistId, onSelect }: HeaderProps) {
 
   return (
     <header className="site-header" ref={headerRef}>
-      <a className="skip" href="#biography">
-        Skip to biography
+      <a className="skip" href={view === "sources" ? "#works-cited-heading" : "#biography"}>
+        {view === "sources" ? "Skip to works cited" : "Skip to biography"}
       </a>
       <div className="header-inner">
         <div className="header-top">
-          <a className="brand" href="#biography" onClick={(event) => jump(event, "biography")}>
+          <a
+            className="brand"
+            href="#biography"
+            onClick={(event) => {
+              if (view === "sources") {
+                event.preventDefault();
+                onSelect(artistId);
+                return;
+              }
+              jump(event, "biography");
+            }}
+          >
             <span className="brand-mark">Renaissance Masters</span>
             <span className="brand-sub">Educational archive</span>
           </a>
-          <div className="artist-tabs" role="tablist" aria-label="Artists">
-            {artists.map((artist) => {
-              const selected = artist.id === artistId;
-              return (
-                <button
-                  key={artist.id}
-                  type="button"
-                  role="tab"
-                  id={`tab-${artist.id}`}
-                  aria-selected={selected}
-                  aria-controls="artist-panel"
-                  tabIndex={selected ? 0 : -1}
-                  onClick={() => onSelect(artist.id)}
-                >
-                  {artist.selectorLabel}
-                  {artist.placeholder ? <span className="badge">Placeholder</span> : null}
-                </button>
-              );
-            })}
+          <div className="header-controls">
+            <div className="artist-tabs" role="tablist" aria-label="Artists">
+              {artists.map((artist) => {
+                const selected = view === "artist" && artist.id === artistId;
+                return (
+                  <button
+                    key={artist.id}
+                    type="button"
+                    role="tab"
+                    id={`tab-${artist.id}`}
+                    aria-selected={selected}
+                    aria-controls="artist-panel"
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => onSelect(artist.id)}
+                  >
+                    {artist.selectorLabel}
+                    {artist.placeholder ? <span className="badge">Placeholder</span> : null}
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              className="sources-link"
+              aria-current={view === "sources" ? "page" : undefined}
+              onClick={onShowSources}
+            >
+              Works Cited
+            </button>
           </div>
         </div>
-        <nav className="section-nav" aria-label="On this page">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              aria-current={activeSection === section.id ? "true" : undefined}
-              onClick={(event) => jump(event, section.id)}
-            >
-              {section.label}
-            </a>
-          ))}
-        </nav>
+        {view === "artist" ? (
+          <nav className="section-nav" aria-label="On this page">
+            {sections.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                aria-current={activeSection === section.id ? "true" : undefined}
+                onClick={(event) => jump(event, section.id)}
+              >
+                {section.label}
+              </a>
+            ))}
+          </nav>
+        ) : null}
       </div>
     </header>
   );

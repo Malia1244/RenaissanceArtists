@@ -6,27 +6,48 @@ type ArtistPageProps = {
   artist: Artist;
 };
 
+function splitName(fullName: string) {
+  const parenthetical = fullName.match(/^(.*?)\s*(\(.*\))\s*$/);
+  if (parenthetical) {
+    return { primary: parenthetical[1].trim(), note: parenthetical[2].trim() };
+  }
+
+  const knownAs = fullName.match(/^(.*?),\s*(commonly known as .*)$/i);
+  if (knownAs) {
+    return { primary: knownAs[1].trim(), note: knownAs[2].trim() };
+  }
+
+  return { primary: fullName, note: "" };
+}
+
 function NameTitle({ artist }: { artist: Artist }) {
-  const words = artist.fullName.split(" ");
+  const { primary, note } = splitName(artist.fullName);
+  const words = primary.split(" ");
   if (artist.placeholder || words.length < 2) {
     return (
-      <h1 id="artist-name" tabIndex={-1}>
-        {artist.fullName}
-      </h1>
+      <>
+        <h1 id="artist-name" tabIndex={-1}>
+          {primary}
+        </h1>
+        {note ? <p className="name-note">{note}</p> : null}
+      </>
     );
   }
 
   const accent = words.length === 2 ? words[1] : words.slice(-2).join(" ");
   const rest = words.length === 2 ? [words[0]] : words.slice(0, -2);
-  const first = rest[0] ?? artist.fullName;
+  const first = rest[0] ?? primary;
   const middle = rest.slice(1).join(" ");
 
   return (
-    <h1 id="artist-name" tabIndex={-1}>
-      <span className="name-lead">{first}</span>
-      {middle ? <span className="name-lead">{middle}</span> : null}
-      <span className="name-accent">{accent}</span>
-    </h1>
+    <>
+      <h1 id="artist-name" tabIndex={-1}>
+        <span className="name-lead">{first}</span>
+        {middle ? <span className="name-lead">{middle}</span> : null}
+        <span className="name-accent">{accent}</span>
+      </h1>
+      {note ? <p className="name-note">{note}</p> : null}
+    </>
   );
 }
 
@@ -156,10 +177,12 @@ export function ArtistPage({ artist }: ArtistPageProps) {
                   <dt>Why it is art</dt>
                   <dd>{artwork.whyArt}</dd>
                 </div>
-                <div>
-                  <dt>Personal selection</dt>
-                  <dd>{artwork.selectionReason}</dd>
-                </div>
+                {artwork.selectionReason ? (
+                  <div>
+                    <dt>Personal selection</dt>
+                    <dd>{artwork.selectionReason}</dd>
+                  </div>
+                ) : null}
               </dl>
               <SourceNote source={artwork.source} />
             </article>
