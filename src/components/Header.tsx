@@ -89,22 +89,32 @@ export function Header({ artistId, view, onSelect, onShowSources }: HeaderProps)
       </a>
       <div className="header-inner">
         <div className="header-top">
-          <a
-            className="brand"
-            href="#biography"
-            onClick={(event) => {
-              if (view === "sources") {
-                event.preventDefault();
-                onSelect(artistId);
-                return;
-              }
-              jump(event, "biography");
-            }}
-          >
-            <span className="brand-mark">Renaissance Artists</span>
-            <span className="brand-by">by Malia</span>
-            <span className="brand-sub">for Mr. Giltzow's project</span>
-          </a>
+          <div className="brand-block">
+            <a
+              className="brand"
+              href="#biography"
+              onClick={(event) => {
+                if (view === "sources") {
+                  event.preventDefault();
+                  onSelect(artistId);
+                  return;
+                }
+                jump(event, "biography");
+              }}
+            >
+              <span className="brand-mark">Renaissance Artists</span>
+              <span className="brand-by">by Malia</span>
+              <span className="brand-sub">for Mr. Giltzow's project</span>
+            </a>
+            <a
+              className="notes-link"
+              href="https://docs.google.com/document/d/1VYVFZB-TerkwL6FTM6Ghlh5VfACNdq_EkJXHJSFSXMY/edit?tab=t.0"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ALL my notes
+            </a>
+          </div>
           <div className="header-controls">
             <div className="artist-tabs" role="tablist" aria-label="Artists">
               {artists.map((artist) => {

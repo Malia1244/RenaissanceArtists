@@ -161,6 +161,15 @@ main,
   letter-spacing: 0.04em;
 }
 
+.notes-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: var(--burgundy);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .section-nav {
   display: flex;
   flex-wrap: wrap;
