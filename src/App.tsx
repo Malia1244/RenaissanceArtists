@@ -13,8 +13,8 @@ export default function App() {
   useEffect(() => {
     document.title =
       view === "sources"
-        ? "Works Cited · Renaissance Masters"
-        : `${artist.selectorLabel} · Renaissance Masters`;
+        ? "Works Cited · Renaissance Artists"
+        : `${artist.selectorLabel} · Renaissance Artists`;
   }, [artist.selectorLabel, view]);
 
   function selectArtist(nextId: string) {
@@ -48,8 +48,7 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <div className="footer-inner">
-          <p className="footer-brand">Renaissance Masters</p>
-          <p>Entries include only the research supplied for each artist.</p>
+          <p className="footer-brand">Renaissance Artists</p>
         </div>
       </footer>
     </div>

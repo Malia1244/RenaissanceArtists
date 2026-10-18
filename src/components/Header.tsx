@@ -101,7 +101,7 @@ export function Header({ artistId, view, onSelect, onShowSources }: HeaderProps)
               jump(event, "biography");
             }}
           >
-            <span className="brand-mark">Renaissance Masters</span>
+            <span className="brand-mark">Renaissance Artists</span>
             <span className="brand-sub">Educational archive</span>
           </a>
           <div className="header-controls">
