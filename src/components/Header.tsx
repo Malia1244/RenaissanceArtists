@@ -102,7 +102,8 @@ export function Header({ artistId, view, onSelect, onShowSources }: HeaderProps)
             }}
           >
             <span className="brand-mark">Renaissance Artists</span>
-            <span className="brand-sub">Educational archive</span>
+            <span className="brand-by">by Malia</span>
+            <span className="brand-sub">for Mr. Giltzow's project</span>
           </a>
           <div className="header-controls">
             <div className="artist-tabs" role="tablist" aria-label="Artists">

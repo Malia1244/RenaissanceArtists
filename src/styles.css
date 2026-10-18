@@ -143,14 +143,22 @@ main,
   text-transform: uppercase;
 }
 
+.brand-by {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.1;
+}
+
 .brand-sub {
   display: block;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   color: var(--gold);
-  font-size: 0.64rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .section-nav {
