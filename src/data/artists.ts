@@ -288,7 +288,8 @@ export const artists: Artist[] = [
     lifespan: "March 1, 1445 - May 17, 1510",
     birthplace: "Florence, Italy",
     artStyle: "Painter",
-    portraitCaption: "Sandro Botticelli",
+    portraitCaption: "Portrait of Sandro Botticelli.",
+    portraitSrc: publicAsset("botticelli.png"),
     biographySource: "https://www.biography.com/artists/sandro-botticelli",
     timeline: [
       {
@@ -337,6 +338,7 @@ export const artists: Artist[] = [
       {
         title: "The Birth of Venus",
         caption: "The Birth of Venus",
+        imageSrc: publicAsset("birth-of-venus.png"),
         source: "https://www.uffizi.it/en/artworks/birth-of-venus",
         period:
           "A painting created from 1483 - 1485 by Sandro Botticelli. The work was believed to be commissioned by a member of the Medici family.",
@@ -350,6 +352,7 @@ export const artists: Artist[] = [
       {
         title: "Primavera",
         caption: "Primavera",
+        imageSrc: publicAsset("primavera.jpg"),
         source: "https://www.italianrenaissance.org/a-closer-look-botticellis-primavera/",
         period:
           "Sandro Botticelli created this painting between 1480 and 1482. The painting was likely commissioned by Lorenzo di Pierfrancesco de' Medici.",
