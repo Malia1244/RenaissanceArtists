@@ -66,6 +66,42 @@ a {
   top: 0.5rem;
 }
 
+.site-shell {
+  position: relative;
+  overflow-x: clip;
+}
+
+.site-flowers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+  width: auto;
+  user-select: none;
+}
+
+.flower.side-left {
+  left: auto;
+  right: calc(50% + min(var(--measure), 100% - 3rem) / 2 + 0.85rem);
+}
+
+.flower.side-right {
+  left: calc(50% + min(var(--measure), 100% - 3rem) / 2 + 0.85rem);
+  right: auto;
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
 .site-header {
   position: sticky;
   top: 0;

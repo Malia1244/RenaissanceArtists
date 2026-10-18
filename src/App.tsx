@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { artists } from "./data/artists";
 import { ArtistPage } from "./components/ArtistPage";
 import { Header } from "./components/Header";
+import { SiteFlowers } from "./components/SiteFlowers";
 import { WorksCited } from "./components/WorksCited";
 
 export default function App() {
@@ -34,7 +35,8 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className="site-shell">
+      <SiteFlowers />
       <Header
         artistId={artist.id}
         view={view}
@@ -50,6 +52,6 @@ export default function App() {
           <p>Entries include only the research supplied for each artist.</p>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
