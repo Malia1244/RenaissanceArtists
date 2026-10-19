@@ -1,12 +1,10 @@
-const flowers = [
-  { src: "lilies.png", side: "left", top: "7rem", height: "15rem" },
-  { src: "roses.png", side: "right", top: "32rem", height: "18rem" },
-  { src: "blossoms.png", side: "left", top: "62rem", height: "17rem" },
-  { src: "cream-blossoms.png", side: "right", top: "94rem", height: "14rem" },
-  { src: "lilies.png", side: "right", top: "126rem", height: "13rem" },
-  { src: "roses.png", side: "left", top: "158rem", height: "16rem" },
-  { src: "blossoms.png", side: "right", top: "192rem", height: "16rem" },
-  { src: "cream-blossoms.png", side: "left", top: "226rem", height: "13rem" },
+const frame = [
+  { src: "lilies.png", place: "tl" },
+  { src: "roses.png", place: "tr" },
+  { src: "blossoms.png", place: "ml" },
+  { src: "cream-blossoms.png", place: "mr" },
+  { src: "roses.png", place: "bl" },
+  { src: "lilies.png", place: "br" },
 ] as const;
 
 function flowerSrc(file: string) {
@@ -16,14 +14,12 @@ function flowerSrc(file: string) {
 export function SiteFlowers() {
   return (
     <div className="site-flowers" aria-hidden="true">
-      {flowers.map((flower, index) => (
+      {frame.map((flower) => (
         <img
-          key={`${flower.src}-${flower.top}`}
-          className={`flower side-${flower.side}`}
+          key={flower.place}
+          className={`flower place-${flower.place}`}
           src={flowerSrc(flower.src)}
           alt=""
-          style={{ top: flower.top, height: flower.height }}
-          data-flower={index}
         />
       ))}
     </div>
