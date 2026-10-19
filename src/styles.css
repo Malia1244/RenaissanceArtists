@@ -1,20 +1,19 @@
 :root {
-  --ivory: #fbf6ec;
-  --ivory-deep: #f3e7d4;
-  --card: rgba(255, 250, 242, 0.72);
-  --ink: #2a2118;
-  --muted: #6d5c4a;
+  --ivory: #f6f1e7;
+  --ivory-deep: #efe6d6;
+  --card: #fbf7f1;
+  --ink: #2c261f;
+  --muted: #6f675c;
   --gold: #9a7433;
   --gold-line: #c6a15b;
   --burgundy: #6e322c;
   --line: rgba(70, 52, 30, 0.14);
-  --cream: #f6efe4;
   --display: "Cormorant Garamond", Georgia, serif;
   --mark: Cinzel, "Times New Roman", serif;
   --sans: Outfit, "Segoe UI", sans-serif;
-  --header-height: 6.5rem;
-  --measure: 68rem;
-  color-scheme: dark;
+  --header-height: 5.5rem;
+  --measure: 76rem;
+  color-scheme: light;
 }
 
 * {
@@ -34,10 +33,8 @@ h2,
 body {
   margin: 0;
   background:
-    radial-gradient(ellipse at 50% 8%, #4a2c24 0%, transparent 32rem),
-    radial-gradient(ellipse at 0% 80%, #2c1816 0%, transparent 26rem),
-    radial-gradient(ellipse at 100% 20%, #24301a 0%, transparent 24rem),
-    #120c0b;
+    radial-gradient(circle at 82% 12%, rgba(198, 161, 91, 0.16), transparent 22rem),
+    var(--ivory);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 1.02rem;
@@ -73,72 +70,23 @@ a {
   position: relative;
 }
 
-.site-flowers {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.flower {
-  position: absolute;
-  width: auto;
-  max-height: none;
-  user-select: none;
-}
-
-.place-tl {
-  top: calc(var(--header-height) + 0.85rem);
-  left: 0.35rem;
-  height: 15rem;
-}
-
-.place-tr {
-  top: calc(var(--header-height) + 1rem);
-  right: 0.2rem;
-  height: 17rem;
-}
-
-.place-bl {
-  bottom: 1rem;
-  left: 0.15rem;
-  height: 16rem;
-}
-
-.place-br {
-  right: 0.15rem;
-  bottom: 1.1rem;
-  height: 15rem;
-}
-
 .site-header,
+main,
 .site-footer {
   position: relative;
-  z-index: 2;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(18, 12, 11, 0.78);
-  border-bottom: 1px solid rgba(231, 201, 138, 0.22);
-  backdrop-filter: blur(14px);
-}
-
-main {
-  position: relative;
-  z-index: 5;
-  width: min(var(--measure), calc(100% - 8rem));
-  margin: 1.4rem auto 2.5rem;
-  padding: 0.6rem 2.8rem 0.8rem;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 246, 226, 0.95), transparent 24rem),
-    linear-gradient(180deg, #fbf6ec 0%, #f4e7d2 100%);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  background: rgba(246, 241, 231, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
 }
 
 .header-inner,
+.artist-page,
 .footer-inner {
   width: min(var(--measure), calc(100% - 3rem));
   margin-inline: auto;
@@ -156,45 +104,43 @@ main {
 }
 
 .brand {
-  color: var(--cream);
+  color: var(--ink);
   text-decoration: none;
 }
 
 .brand-mark {
   display: block;
-  font-family: var(--display);
-  font-size: 1.85rem;
-  font-style: italic;
+  font-family: var(--mark);
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 0.95;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.brand-by {
-  display: block;
-  margin-top: 0.15rem;
+.brand-credit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.55rem;
+  margin: 0.28rem 0 0;
+  color: var(--gold);
   font-family: var(--display);
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   font-style: italic;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
-.brand-sub {
-  display: block;
-  margin-top: 0.1rem;
-  color: #e7c98a;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+.brand-credit span[aria-hidden="true"] {
+  color: var(--gold-line);
+  font-style: normal;
 }
 
 .notes-link {
-  display: inline-block;
-  margin-top: 0.35rem;
-  color: #f0d7a2;
-  font-family: var(--display);
-  font-size: 1.05rem;
-  font-style: italic;
+  color: var(--burgundy);
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .section-nav {
@@ -208,17 +154,17 @@ main {
 }
 
 .section-nav a {
-  color: rgba(246, 239, 228, 0.72);
-  font-family: var(--display);
-  font-size: 1.15rem;
+  color: #6a6156;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.14em;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .section-nav a[aria-current="true"] {
-  color: #fffaf2;
-  box-shadow: inset 0 -1px 0 #e7c98a;
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--gold-line);
 }
 
 .header-controls {
@@ -242,22 +188,20 @@ main {
   align-items: center;
   gap: 0.4rem;
   border: 0;
-  border-radius: 0;
+  border-radius: 2px;
   background: transparent;
-  color: rgba(246, 239, 228, 0.78);
+  color: #6a6156;
   cursor: pointer;
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  padding: 0.35rem 0.7rem;
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  padding: 0.55rem 0.75rem;
 }
 
 .artist-tabs button[aria-selected="true"],
 .sources-link[aria-current="page"] {
-  background: transparent;
-  color: #fffaf2;
-  box-shadow: inset 0 -1px 0 #e7c98a;
+  background: var(--burgundy);
+  color: #f8f1e6;
 }
 
 .badge {
@@ -436,12 +380,11 @@ h1 {
 
 h2 {
   margin: 0;
-  font-family: var(--display);
-  font-size: clamp(2rem, 3vw, 2.7rem);
-  font-style: italic;
+  font-family: var(--mark);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
   font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -602,12 +545,8 @@ h3 {
 }
 
 .site-footer {
-  background: transparent;
-  color: var(--cream);
-}
-
-.footer-brand {
-  color: var(--cream);
+  background: var(--ivory-deep);
+  border-top: 1px solid var(--line);
 }
 
 .citation-groups {
@@ -675,17 +614,6 @@ h2:focus,
   outline: none;
 }
 
-@media (max-width: 1280px) {
-  main {
-    width: min(var(--measure), calc(100% - 2rem));
-    padding-inline: 1.4rem;
-  }
-
-  .flower {
-    height: 11rem !important;
-  }
-}
-
 @media (max-width: 1100px) {
   .timeline,
   .patron-grid {
@@ -720,16 +648,6 @@ h2:focus,
 }
 
 @media (max-width: 800px) {
-  .site-flowers {
-    display: none;
-  }
-
-  main {
-    width: min(var(--measure), calc(100% - 1.25rem));
-    margin-top: 0.6rem;
-    padding-inline: 1rem;
-  }
-
   .header-inner,
   .artist-page,
   .footer-inner {
