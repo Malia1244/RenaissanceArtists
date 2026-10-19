@@ -1,10 +1,8 @@
 const frame = [
-  { src: "lilies.png", place: "tl" },
-  { src: "roses.png", place: "tr" },
-  { src: "blossoms.png", place: "ml" },
-  { src: "cream-blossoms.png", place: "mr" },
-  { src: "roses.png", place: "bl" },
-  { src: "lilies.png", place: "br" },
+  { src: "white-lilies.png", place: "tl" },
+  { src: "magnolia.png", place: "tr" },
+  { src: "jasmine.png", place: "bl" },
+  { src: "scroll.png", place: "br" },
 ] as const;
 
 function flowerSrc(file: string) {

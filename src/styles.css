@@ -76,55 +76,42 @@ a {
 .site-flowers {
   position: fixed;
   inset: 0;
-  z-index: 4;
+  z-index: 3;
   pointer-events: none;
 }
 
 .flower {
   position: absolute;
   width: auto;
+  max-height: 13rem;
   user-select: none;
-  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.35));
 }
 
 .place-tl {
-  top: -1.5rem;
-  left: -1.5rem;
-  height: 17rem;
+  top: 5.5rem;
+  left: 0.4rem;
+  height: 12rem;
 }
 
 .place-tr {
-  top: 3.5rem;
-  right: -1.2rem;
-  height: 19rem;
-}
-
-.place-ml {
-  top: 42%;
-  left: -2rem;
-  height: 16rem;
-}
-
-.place-mr {
-  top: 46%;
-  right: -1.4rem;
-  height: 17rem;
+  top: 5.5rem;
+  right: 0.4rem;
+  height: 13rem;
 }
 
 .place-bl {
-  bottom: -1rem;
-  left: -1.5rem;
-  height: 16rem;
+  bottom: 0.6rem;
+  left: 0.4rem;
+  height: 13rem;
 }
 
 .place-br {
-  right: -1.8rem;
-  bottom: 0.5rem;
-  height: 15rem;
+  right: 0.2rem;
+  bottom: 0.4rem;
+  height: 14rem;
 }
 
 .site-header,
-main,
 .site-footer {
   position: relative;
   z-index: 2;
@@ -140,13 +127,15 @@ main,
 }
 
 main {
-  width: min(var(--measure), calc(100% - 13rem));
-  margin: 1.25rem auto 2.5rem;
-  padding: 0.4rem 2.6rem 0.6rem;
+  position: relative;
+  z-index: 5;
+  width: min(var(--measure), calc(100% - 8rem));
+  margin: 1.4rem auto 2.5rem;
+  padding: 0.6rem 2.8rem 0.8rem;
   background:
     radial-gradient(ellipse at 50% 0%, rgba(255, 246, 226, 0.95), transparent 24rem),
     linear-gradient(180deg, #fbf6ec 0%, #f4e7d2 100%);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
 }
 
 .header-inner,
@@ -688,17 +677,12 @@ h2:focus,
 
 @media (max-width: 1280px) {
   main {
-    width: min(var(--measure), calc(100% - 4.5rem));
+    width: min(var(--measure), calc(100% - 2rem));
     padding-inline: 1.4rem;
   }
 
-  .place-tl,
-  .place-tr,
-  .place-ml,
-  .place-mr,
-  .place-bl,
-  .place-br {
-    height: 9rem;
+  .flower {
+    max-height: 8rem;
   }
 }
 
