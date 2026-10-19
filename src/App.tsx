@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { artists } from "./data/artists";
 import { ArtistPage } from "./components/ArtistPage";
 import { Header } from "./components/Header";
+import { SiteFlowers } from "./components/SiteFlowers";
 import { WorksCited } from "./components/WorksCited";
 
 export default function App() {
@@ -12,8 +13,8 @@ export default function App() {
   useEffect(() => {
     document.title =
       view === "sources"
-        ? "Works Cited · Renaissance Artists"
-        : `${artist.selectorLabel} · Renaissance Artists`;
+        ? "Works Cited · Renaissance Masters"
+        : `${artist.selectorLabel} · Renaissance Masters`;
   }, [artist.selectorLabel, view]);
 
   function selectArtist(nextId: string) {
@@ -35,6 +36,7 @@ export default function App() {
 
   return (
     <div className="site-shell">
+      <SiteFlowers />
       <Header
         artistId={artist.id}
         view={view}
@@ -46,7 +48,7 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <div className="footer-inner">
-          <p className="footer-brand">Renaissance Artists</p>
+          <p className="footer-brand">Renaissance Masters</p>
         </div>
       </footer>
     </div>

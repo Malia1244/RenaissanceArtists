@@ -68,12 +68,38 @@ a {
 
 .site-shell {
   position: relative;
+  overflow-x: clip;
+}
+
+.site-flowers {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.flower {
+  position: absolute;
+  width: auto;
+  user-select: none;
+}
+
+.flower.side-left {
+  left: auto;
+  right: calc(50% + min(var(--measure), 100% - 3rem) / 2 + 0.85rem);
+}
+
+.flower.side-right {
+  left: calc(50% + min(var(--measure), 100% - 3rem) / 2 + 0.85rem);
+  right: auto;
 }
 
 .site-header,
 main,
 .site-footer {
   position: relative;
+  z-index: 2;
 }
 
 .site-header {
@@ -117,30 +143,14 @@ main,
   text-transform: uppercase;
 }
 
-.brand-credit {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.55rem;
-  margin: 0.28rem 0 0;
+.brand-sub {
+  display: block;
+  margin-top: 0.2rem;
   color: var(--gold);
-  font-family: var(--display);
-  font-size: 1.08rem;
-  font-style: italic;
-  line-height: 1.2;
-}
-
-.brand-credit span[aria-hidden="true"] {
-  color: var(--gold-line);
-  font-style: normal;
-}
-
-.notes-link {
-  color: var(--burgundy);
-  font-size: 0.95rem;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .section-nav {
